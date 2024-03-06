@@ -1,19 +1,20 @@
+import styles from "components/templates/CheckOtp.module.css"
 
 
-const CheckOtp = ({otp ,setOtp,submitHamdler,setStep}) => {
+const CheckOtp = ({otp ,setOtp,submitHamdler,setStep,isPending,number}) => {
     return (
-        <div>
+        <div className={styles.container}>
+            <form onSubmit={submitHamdler} className={styles.form}>
             <h2>
                 تائید کد پیامک شده
             </h2>
-            <form onSubmit={submitHamdler}>
-                <div>
+                <p>کد تائید ۵ رقمی ارسال شده به شماره  {number} را وارد کنید.</p>
                     <label htmlFor="otp">کد تائید را وارد کنید</label>
-                    <input type="number" id="otp" name="otp" required value={otp} onChange={(e)=>setOtp(e.target.value)} />
-                </div>
+                    <input placeholder="کد تايید ۵ رقمی" type="number" id="otp" name="otp" required value={otp} onChange={(e)=>setOtp(e.target.value)} />
+                
                 <button type="submit">ورود</button>
+            <button className={styles.back_btn} disabled={isPending} onClick={()=>setStep(1)}>تغییر شماره همراه</button>
             </form>
-            <button onClick={()=>setStep(1)}>تغییر شماره همراه</button>
         </div>
     );
 };

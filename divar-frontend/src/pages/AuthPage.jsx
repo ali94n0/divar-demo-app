@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import CheckOtp from 'components/templates/CheckOtp';
 import SendOtp from 'components/templates/SendOtp';
 import { checkOtpApi, getOtpApi } from 'services/authService';
-import { setCookie } from 'src/utils/cookie';
+import { setCookie } from 'utils/cookie';
 
 
 
@@ -14,7 +14,9 @@ const AuthPage = () => {
     const [step, setStep] = useState(1)
     const [number, setNumber] = useState("");
     const [otp, setOtp] = useState("")
-    const navigate =useNavigate()
+    const navigate = useNavigate()
+    
+
 
     const {isPending:isNumberSending,mutate:sendNumber } = useMutation({
         mutationFn: getOtpApi,
@@ -35,6 +37,7 @@ const AuthPage = () => {
             toast.error(err?.response?.data?.message || "ورود با مشکل مواجه شد")
         }
     })
+
 
     const getOtpHandler =async (e) => {
         e.preventDefault()
@@ -65,8 +68,6 @@ const AuthPage = () => {
                 code : otp
             }, {
                 onSuccess: (data) => {
-
-
                     if (data) {
                         setOtp("")
                         setNumber("")
@@ -84,7 +85,7 @@ const AuthPage = () => {
     return (
         <div>
             {step === 1 && <SendOtp setStep={setStep} number={number} setNumber={setNumber} submitHandler={getOtpHandler} isPending={isNumberSending} />}
-            {step === 2 && <CheckOtp number={number} otp={otp} setOtp={setOtp} setStep={setStep} submitHamdler={sendOtpHandler}/>}
+            {step === 2 && <CheckOtp setOtp={setOtp} otp={otp} number={number}  setStep={setStep} submitHamdler={sendOtpHandler} isPending={isCheckingOtp}  />}
         </div>
     );
 };
