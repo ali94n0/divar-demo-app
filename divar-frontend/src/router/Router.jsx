@@ -1,5 +1,5 @@
 
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage';
 import AuthPage from 'pages/AuthPage';
@@ -8,6 +8,7 @@ import AdminPage from 'pages/AdminPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import useUser from 'src/hooks/useUser';
 import Loader from 'components/modules/Loader';
+import { useEffect } from 'react';
 
 
 
@@ -15,14 +16,17 @@ import Loader from 'components/modules/Loader';
 
 const Router = () => {
 
-    const { user,isLoading } = useUser()
+    const { user, isLoading } = useUser()
+    
+    
+
     if(isLoading)return <Loader/>
     return (
         <Routes>
             <Route path='/' element={<HomePage/>} />
-            <Route path='/auth' element={user ? <AuthPage/> : <Navigate to={"/"}/> } />
-            <Route path='/dashboard' element={(user && user.role === "USER") ? <DashboardPage/> : <Navigate to={"/auth"}/>} />
-            <Route path='/admin' element={(user && user.role === "ADMIN") ? <AdminPage/> : <Navigate to={"/dashboard"}/>} />
+            <Route path='/auth' element={(user) ? <Navigate to={"/dashboard"}/> : <AuthPage/> } />
+            <Route path='/admin' element={( user && user.role === "ADMIN") ? <AdminPage/> : <Navigate to={"/dashboard"}/>} />
+            <Route path='/dashboard' element={(user && (user.role === "USER" || user.role === "ADMIN")) ? <DashboardPage/>  : <Navigate to={"/auth"}/>} />
             <Route path='*' element={<NotFoundPage/>} />
         </Routes>
     );

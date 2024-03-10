@@ -7,7 +7,7 @@ const useUser = () => {
 		queryKey: ["user"],
 		queryFn: getUserApi,
 	});
-	const user = data || {};
+	const user = data || null;
 	return { isLoading, user, error };
 };
 

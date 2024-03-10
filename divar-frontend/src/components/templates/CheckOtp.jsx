@@ -1,10 +1,10 @@
 import styles from "components/templates/CheckOtp.module.css"
 
 
-const CheckOtp = ({otp ,setOtp,submitHamdler,setStep,isPending,number}) => {
+const CheckOtp = ({otp ,setOtp,submitHandler,setStep,isPending,number}) => {
     return (
         <div className={styles.container}>
-            <form onSubmit={submitHamdler} className={styles.form}>
+            <form onSubmit={submitHandler} className={styles.form}>
             <h2>
                 تائید کد پیامک شده
             </h2>

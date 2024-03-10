@@ -1,9 +1,12 @@
 import React from 'react';
+import CategoriesList from 'components/templates/CategoriesList';
+import AddCategory from 'components/templates/AddCategory';
 
 const AdminPage = () => {
     return (
         <div>
-            Admin page
+            <CategoriesList/>
+            <AddCategory/>
         </div>
     );
 };

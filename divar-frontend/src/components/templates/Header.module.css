@@ -1,0 +1,77 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgb(179, 53, 53);
+    padding: 10px 5px;
+}
+.header div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+
+.header div span , a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7px;
+    color: rgb(76, 76, 76);
+    font-weight: 200;
+}
+.logo{
+    width: 40px;
+    height: auto;
+}
+.header .btn{
+    /* margin: 0px 5px 10px 5px; */
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: rgb(179, 53, 53);
+        color: rgb(255, 255, 255);
+}
+header div .mydivar{
+    position: relative;
+    cursor: pointer;
+    gap: 10px;
+    
+}
+.open{
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    background-color: white;
+width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 10px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 10px;
+    
+}
+.open ul {
+    width: 100%;
+}
+.open li{
+    margin: 5px 0px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    list-style: none;
+    width: 100%;
+    padding: 3px 0px;
+    display: flex;
+    align-items: center;
+    color: rgb(77, 77, 77);
+}
+.open li:last-child{
+    border-bottom: none;
+    color: rgb(175, 48, 48);
+    cursor: pointer;
+}
+header div .close{
+    display:none
+}

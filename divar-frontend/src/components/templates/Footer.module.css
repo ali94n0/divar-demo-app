@@ -1,0 +1,19 @@
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 2px solid rgb(179, 53, 53);
+    padding: 10px 5px;
+    
+}
+.footer span{
+    display: flex;
+    color: rgb(105, 103, 103);
+        font-weight: 200;
+        direction: ltr;
+
+}
+.footer span a{
+    color: rgb(145, 16, 214);
+}

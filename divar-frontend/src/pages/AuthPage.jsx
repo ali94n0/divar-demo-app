@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueries, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
 import CheckOtp from 'components/templates/CheckOtp';
 import SendOtp from 'components/templates/SendOtp';
 import { checkOtpApi, getOtpApi } from 'services/authService';
 import { setCookie } from 'utils/cookie';
+import useUser from 'hooks/useUser';
+import { getUserApi } from 'src/services/userService';
 
 
 
@@ -15,6 +17,9 @@ const AuthPage = () => {
     const [number, setNumber] = useState("");
     const [otp, setOtp] = useState("")
     const navigate = useNavigate()
+
+    // const {refetch} =useUser()
+    
     
 
 
@@ -74,7 +79,9 @@ const AuthPage = () => {
                         //set tokens in cookie
                         setCookie(data)
                         //navigate to home page
-                        navigate("/",{replace:true})
+                        navigate("/", { replace: true })
+                        // refetch()
+                        navigate(0)
                     }
                 }
                 
@@ -85,7 +92,7 @@ const AuthPage = () => {
     return (
         <div>
             {step === 1 && <SendOtp setStep={setStep} number={number} setNumber={setNumber} submitHandler={getOtpHandler} isPending={isNumberSending} />}
-            {step === 2 && <CheckOtp setOtp={setOtp} otp={otp} number={number}  setStep={setStep} submitHamdler={sendOtpHandler} isPending={isCheckingOtp}  />}
+            {step === 2 && <CheckOtp setOtp={setOtp} otp={otp} number={number}  setStep={setStep} submitHandler={sendOtpHandler} isPending={isCheckingOtp}  />}
         </div>
     );
 };

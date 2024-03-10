@@ -1,9 +1,13 @@
 import React from 'react';
+import AddNewPost from 'components/templates/AddNewPost';
 
 const DashboardPage = () => {
     return (
         <div>
-            Dashboard page
+            <AddNewPost/>
+            <div>
+                my posts
+            </div>
         </div>
     );
 };
