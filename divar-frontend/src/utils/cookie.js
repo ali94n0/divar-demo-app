@@ -1,5 +1,3 @@
-import { array } from "yup";
-
 export const setCookie = (tokens) => {
 	document.cookie = `accessToken=${tokens.accessToken}; Max-Age=${
 		24 * 60 * 60

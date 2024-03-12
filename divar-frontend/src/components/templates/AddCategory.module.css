@@ -21,6 +21,8 @@ gap: 5px;
 .formContainer form div label{
     padding: 0px 10px;
     color: rgb(68, 68, 68);
+    cursor: pointer;
+        width: fit-content;
 }
 .formContainer form input{
     width:30%;

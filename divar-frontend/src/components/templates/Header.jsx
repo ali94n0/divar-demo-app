@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Header = ({ data: user }) => {
     const [isOpen, setIsOpen] = useState(false)
     const navigate=useNavigate()
-    
+
     const logoutHandler = () => {
         document.cookie = "accessToken" + '=; Max-Age=0';
         document.cookie = "refreshToken" + '=; Max-Age=0'
@@ -27,7 +27,7 @@ const Header = ({ data: user }) => {
                 </span>
             </div>
             <div>
-                <div onClick={()=>setIsOpen(prev=>!prev)} className={styles.mydivar}>
+                {user ? (<div onClick={()=>setIsOpen(prev=>!prev)} className={styles.mydivar}>
                     <img src='profile.svg' alt='divar-profile' />
                     {user ? <p>
                         دیوار من
@@ -37,15 +37,22 @@ const Header = ({ data: user }) => {
                             <li>
                                 <Link to="/dashboard">پنل کاربری</Link>
                             </li>
-                            <li>
+                            {(user?.role === "ADMIN") && <li>
                                 <Link to="/admin">پنل ادمین</Link>
-                            </li>
+                            </li> }
                             <li onClick={logoutHandler}>
                                 <p className={styles.logout}>خروج</p>
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>) : (
+                        <Link to="/auth" >
+                    <img src='profile.svg' alt='divar-profile' />
+                    {user ? <p>
+                        دیوار من
+                    </p> : <p>ورود</p>} </Link>
+                    ) }
+                
                 <Link to="dashboard" className={styles.btn}>
                     ثبت اگهی
                 </Link>

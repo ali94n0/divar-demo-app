@@ -24,6 +24,7 @@
         border-radius: 5px;
         color: rgb(179, 53, 53);
         background-color: #fff;
+        cursor: pointer;
         
 }
 .category div button:disabled{
