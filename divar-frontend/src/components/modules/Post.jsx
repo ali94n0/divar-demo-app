@@ -8,13 +8,7 @@ const Post = ({ post }) => {
 
 
     const removeHandler = async () => {
-        console.log("delete");
-        await deleting(post._id, {
-            onSuccess: (res) => {
-                console.log(res);
-            }
-        })
-        
+        await deleting(post._id)  
     }
 
     return (

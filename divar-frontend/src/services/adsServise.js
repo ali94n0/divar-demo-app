@@ -18,3 +18,8 @@ export const getMyPostApi = () => {
 export const removePostApi = (id) => {
 	return http.delete(`post/delete/${id}`).then((res) => res.data);
 };
+
+export const getAllPostsApi = (search = "") => {
+	console.log(search, "service");
+	return http.get(`${search}`).then((res) => res.data);
+};

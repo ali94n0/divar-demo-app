@@ -1,0 +1,36 @@
+.card{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 5px;
+
+
+}
+.card img{
+    width: 120px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.desc p{
+    color: rgb(59, 59, 59);
+    font-size: small;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.desc div{
+    display: flex;
+    flex-direction: column;
+}
+.desc div span{
+    font-size: small;
+    color: gray;
+}
